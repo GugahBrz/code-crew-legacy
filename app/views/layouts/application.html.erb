@@ -11,11 +11,15 @@
 
   <body>
     <% if user_signed_in? %>
-        <%= link_to 'Edit profile', edit_user_registration_path %>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+      <%= link_to 'Edit profile', edit_user_registration_path %>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+
+      <p>Logged in as <strong><%= current_user.email %></strong>.</p>
+      <%= link_to 'Home', root_path %>
+      <%= link_to 'Documents', documents_path %>
     <% else %>
-        <%= link_to "Sign up", new_user_registration_path %>
-        <%= link_to "Sign in", new_user_session_path %>
+      <%= link_to "Sign up", new_user_registration_path %>
+      <%= link_to "Sign in", new_user_session_path %>
     <% end %>
 
     <%= yield %>

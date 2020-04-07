@@ -1,0 +1,15 @@
+<%= form_with model: @document do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :content %><br>
+    <%= form.text_area :content %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
