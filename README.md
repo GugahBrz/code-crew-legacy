@@ -1,24 +1,24 @@
-# README
+# CodeCrew
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is a open-source collaborative platform for development.
 
-Things you may want to cover:
+## Ongoing
 
-* Ruby version
+* Choose a style framework
 
-* System dependencies
+## What’s next!?
 
-* Configuration
+* Evolve documents model
+* Groom workspaces concept
+* Write better UI/UX
+* Choose a host server
+* Create and implements CI (auto-deploy etc.)
+* Choose a mailing server
 
-* Database creation
+## Done!
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* User model
+* Document model
+* Authentication strategy with devise
+* Authorization strategy with pundit
+* Documents policy (should evolve)
