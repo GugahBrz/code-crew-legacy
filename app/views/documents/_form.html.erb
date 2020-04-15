@@ -1,15 +1,15 @@
 <%= form_with model: @document do |form| %>
-  <p>
+  <p class="form-group">
     <%= form.label :title %><br>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class: "form-control" %>
   </p>
 
-  <p>
+  <p class="form-group">
     <%= form.label :content %><br>
-    <%= form.text_area :content %>
+    <%= form.text_area :content, class: "form-control" %>
   </p>
 
-  <p>
-    <%= form.submit %>
+  <p class="form-group actions">
+    <%= form.submit "Submit", class: "btn btn-primary" %>
   </p>
 <% end %>
