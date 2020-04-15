@@ -8,6 +8,7 @@ This project is a open-source collaborative platform for development.
 
 ## What’s next!?
 
+* Handle 404/500 errors
 * Evolve documents model
 * Groom workspaces concept
 * Choose a host server
