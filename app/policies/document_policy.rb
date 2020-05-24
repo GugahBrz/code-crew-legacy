@@ -5,12 +5,15 @@ class DocumentPolicy < ApplicationPolicy
     end
   end
 
-  def update?
+  def show?
     owner? || editor? || reader?
   end
 
+  def update?
+    owner? || editor?
+  end
+
   alias_method :edit?, :update?
-  alias_method :show?, :update?
   alias_method :destroy?, :update?
 
   private
