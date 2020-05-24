@@ -4,22 +4,22 @@ This project is a open-source collaborative platform for development.
 
 ## Ongoing
 
-* Write better UI/UX
+* Choose a host server
 
 ## What’s next!?
 
+* Write better UI/UX
 * Handle 404/500 errors
 * Evolve documents model
 * Groom workspaces concept
-* Choose a host server
 * Create and implements CI (auto-deploy etc.)
-* Choose a mailing server
 
 ## Done!
 
 * User model
-* Document model
+* Document model (should evolve)
 * Authentication strategy with devise
 * Authorization strategy with pundit
 * Documents policy (should evolve)
 * Choose a style framework
+* Choose and config mailing server
