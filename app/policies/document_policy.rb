@@ -6,15 +6,18 @@ class DocumentPolicy < ApplicationPolicy
   end
 
   def show?
-    owner? || editor? || reader?
+    owner? || writer? || reader?
   end
 
   def update?
-    owner? || editor?
+    owner? || writer?
+  end
+
+  def destroy?
+    owner?
   end
 
   alias_method :edit?, :update?
-  alias_method :destroy?, :update?
 
   private
 
@@ -22,7 +25,7 @@ class DocumentPolicy < ApplicationPolicy
     user == record.user
   end
 
-  def editor?
+  def writer?
     false
   end
 

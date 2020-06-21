@@ -46,7 +46,7 @@ class DocumentsController < BaseController
 
   private
 
-  # FIXME: not sure if merge user: current_user is the best way to do it
+  # FIXME: not sure if merge user is the best way to do it
   def secure_params
     params.require(:document).permit(:title, :content).merge(user: current_user)
   end
