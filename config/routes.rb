@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  resources :documents
+  resources :documents do
+    resources :permissions
+  end
 end

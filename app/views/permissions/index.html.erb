@@ -1,0 +1,29 @@
+<div class="d-flex justify-content-between align-items-center">
+  <h1>Document permissions</h1>
+  <%= link_to 'Add permission', new_document_permission_path, class: "btn btn-primary ml-auto" %>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">User</th>
+      <th scope="col">Role</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @permissions.each do |permission| %>
+    <tr>
+      <th scope="row"><%= permission.user.email %></th>
+      <th scope="row"><%= permission.role %></th>
+      <td>
+        <%= link_to 'Edit', edit_document_permission_path(@document, permission), class: "btn btn-link" %>
+        <%= link_to 'Remove', document_permission_path(@document, permission), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back', documents_path, class: "btn btn-link" %>

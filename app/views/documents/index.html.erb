@@ -7,6 +7,7 @@
   <thead>
     <tr>
       <th scope="col">Title</th>
+      <th scope="col">Owner</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
@@ -15,11 +16,24 @@
   <% @documents.each do |document| %>
     <tr>
       <th scope="row"><%= document.title %></th>
-      <td>
-        <%= link_to 'Show', document_path(document), class: "btn btn-link" %>
-        <%= link_to 'Edit', edit_document_path(document), class: "btn btn-link" %>
-        <%= link_to 'Destroy', document_path(document), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %>
-      </td>
+      <th scope="row"><%= document.user.email %></th>
+      <th scope="row">
+        <% if DocumentPolicy.new(current_user, document).update_permissions? %>
+          <%= link_to 'Permissions', document_permissions_path(document), class: "btn btn-link" %>
+        <% end %>
+
+        <% if DocumentPolicy.new(current_user, document).show? %>
+          <%= link_to 'Show', document_path(document), class: "btn btn-link" %>
+        <% end %>
+
+        <% if DocumentPolicy.new(current_user, document).update? %>
+          <%= link_to 'Edit', edit_document_path(document), class: "btn btn-link" %>
+        <% end %>
+
+        <% if DocumentPolicy.new(current_user, document).destroy? %>
+          <%= link_to 'Destroy', document_path(document), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %>
+        <% end %>
+      </th>
     </tr>
   <% end %>
   </tbody>

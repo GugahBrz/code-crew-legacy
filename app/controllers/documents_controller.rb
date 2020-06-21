@@ -1,33 +1,38 @@
 class DocumentsController < BaseController
   before_action :set_record, only: %i[show edit update destroy]
 
+  # GET documents
   def index
     @documents = scope
   end
 
+  # GET documents/1
   def show
     authorize @document
 
     @document
   end
 
+  # GET documents/new
   def new
     @document = Document.new
   end
 
+  # POST documents
   def create
-    @document = Document.new(secure_params)
-    @document.save!
+    @document = current_user.documents.create!(secure_params)
 
     redirect_to @document
   end
 
+  # GET documents/1/edit
   def edit
     authorize @document
 
     @document
   end
 
+  # PATCH/PUT documents/1
   def update
     authorize @document
 
@@ -36,6 +41,7 @@ class DocumentsController < BaseController
     redirect_to @document
   end
 
+  # DELETE documents/1
   def destroy
     authorize @document
 
@@ -46,9 +52,9 @@ class DocumentsController < BaseController
 
   private
 
-  # FIXME: not sure if merge user is the best way to do it
   def secure_params
-    params.require(:document).permit(:title, :content).merge(user: current_user)
+    params.require(:document)
+          .permit(:title, :content)
   end
 
   def scope
@@ -56,6 +62,6 @@ class DocumentsController < BaseController
   end
 
   def set_record
-    @document = scope.find(params[:id])
+    @document = Document.find(params[:id])
   end
 end

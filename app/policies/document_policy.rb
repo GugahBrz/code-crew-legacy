@@ -1,7 +1,17 @@
 class DocumentPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
+      owned_documents + shared_documents
+    end
+
+    private
+
+    def owned_documents
       scope.where(user: user)
+    end
+
+    def shared_documents
+      scope.includes(:permissions).where(permissions: { user: user })
     end
   end
 
@@ -11,6 +21,10 @@ class DocumentPolicy < ApplicationPolicy
 
   def update?
     owner? || writer?
+  end
+
+  def update_permissions?
+    owner?
   end
 
   def destroy?
@@ -26,10 +40,14 @@ class DocumentPolicy < ApplicationPolicy
   end
 
   def writer?
-    false
+    permission.writer?
   end
 
   def reader?
-    false
+    permission.reader?
+  end
+
+  def permission
+    record.permissions.select { |permission| permission.user == user }.first
   end
 end

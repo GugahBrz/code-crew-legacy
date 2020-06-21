@@ -9,4 +9,12 @@ class Permission < ApplicationRecord
 
   attribute :role,:string, default: Role::WRITER
   validates :role, inclusion: { in: Role.values }
+
+  def writer?
+    role == Role::WRITER
+  end
+
+  def reader?
+    role == Role::READER
+  end
 end

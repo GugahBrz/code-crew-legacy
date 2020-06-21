@@ -1,0 +1,20 @@
+<h1>Editing Permission</h1>
+
+<%= form_with model: @permission, url: document_permission_path, multiple: true do |form| %>
+  <%= form.fields_for :user, @permission.user do |user| %>
+    <p class="form-group">
+      <%= user.text_field :email, class: "form-control" %>
+    </p>
+  <% end %>
+
+  <p class="form-group">
+    <%= form.label :role %><br>
+    <%= form.select :role, [%w(Writer writer), %w(Reader reader)], {}, { class: "form-control" } %>
+  </p>
+
+  <p class="form-group actions">
+    <%= form.submit "Submit", class: "btn btn-primary" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', document_permissions_path %>
