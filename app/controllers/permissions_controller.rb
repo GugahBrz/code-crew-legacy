@@ -82,6 +82,6 @@ class PermissionsController < ApplicationController
 
   # FIXME: It shouldn't be here
   def inform_user
-    DocumentMailer.document_shared_email(current_user, @document, @permission).deliver_later
+    DocumentMailer.document_shared_email(current_user, @document, @permission).deliver_now
   end
 end
