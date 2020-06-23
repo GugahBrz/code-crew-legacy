@@ -3,7 +3,7 @@ class PermissionsController < ApplicationController
   before_action :set_document
 
   # FIXME: before_create/update should verify
-  #   if there's already a permission for the user
+  #   if there's already a permission on this doc for this user
 
   # GET documents/1/permissions
   def index
@@ -18,7 +18,7 @@ class PermissionsController < ApplicationController
   # POST documents/1/permissions
   def create
     # FIXME: If cannot find, should create User and sent invitation
-    #   Could be a FindOrInviteUserService
+    #   e.g FindOrInviteUserService
     user = User.find_by(email: secure_params[:user][:email])
 
     @permission = Permission.new(
@@ -44,7 +44,7 @@ class PermissionsController < ApplicationController
   # PATCH/PUT documents/1/permissions/1
   def update
     # FIXME: If cannot find, should create User and sent invitation
-    #   Could be a FindOrInviteUserService
+    #   e.g FindOrInviteUserService
     user = User.find_by(email: secure_params[:user][:email])
 
     should_inform_user = user.email != self.user.email ? true : false
