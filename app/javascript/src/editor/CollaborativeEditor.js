@@ -7,6 +7,7 @@ class CollaborativeEditor extends React.Component {
     super(props);
     this.state = {
       document: new CollaborativeDocument(
+        props.client,
         props.documentId,
         props.content,
         this.onChange.bind(this)

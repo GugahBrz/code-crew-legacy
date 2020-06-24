@@ -4,6 +4,7 @@
 <%= content_tag :div,
   class: "collaborative-editor",
   data: {
+    client: current_user,
     documentId: @document.id,
     content: @document.content,
     version: @document.version

@@ -3,7 +3,7 @@ import SelectionsChannel from "./SelectionsChannel";
 import { transform, transformOffset } from "./transform";
 import compose from "./compose";
 
-const clientId = Math.floor(Math.random() * 1000000);
+// const clientId = Math.floor(Math.random() * 1000000);
 
 class CollaborationClient {
   constructor({
@@ -22,14 +22,18 @@ class CollaborationClient {
     this.version = 0;
   }
 
-  connect(document, initialVersion) {
+  connect(client, document, initialVersion) {
     this.version = initialVersion;
-    this.connectOperationsChannel(document.id, initialVersion);
-    this.connectSelectionsChannel(document, initialVersion);
+    this.client = client;
+
+    // FIXME: should actually use username as clientId
+    this.connectOperationsChannel(this.client.email, document.id, initialVersion);
+    this.connectSelectionsChannel(this.client.email, document, initialVersion);
+
     window.setInterval(this._sendCurrentOffset, 2000);
   }
 
-  connectOperationsChannel(documentId, initialVersion) {
+  connectOperationsChannel(clientId, documentId, initialVersion) {
     const operationsChannel = new OperationsChannel({
       clientId,
       documentId,
@@ -43,7 +47,7 @@ class CollaborationClient {
     });
   }
 
-  connectSelectionsChannel(document, initialVersion) {
+  connectSelectionsChannel(clientId, document, initialVersion) {
     const selectionsChannel = new SelectionsChannel({
       clientId,
       documentId: document.id,
@@ -148,7 +152,7 @@ class CollaborationClient {
     if (this.pendingOperations.length === 0) {
       this.selectionsChannel &&
         this.selectionsChannel.setOffset(
-          clientId,
+          this.client.email, // clientId
           this.version,
           this.currentOffset
         );

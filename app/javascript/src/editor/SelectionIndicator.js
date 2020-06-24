@@ -87,7 +87,7 @@ export default class SelectionIndicator extends React.Component {
     const { caret } = this.state;
     if (!caret) return null;
 
-    const backgroundColor = COLORS[this.props.clientId % COLORS.length];
+    const backgroundColor = COLORS[this.props.clientId.length % COLORS.length];
     const indicatorStyle = {
       top: caret.top - 1,
       left: caret.left - 2,

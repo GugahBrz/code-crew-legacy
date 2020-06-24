@@ -17,5 +17,7 @@ export default props => {
         clientId={selection.clientId}
       />
     ));
-  return <div className="selections">{selectionIndicators}</div>;
+  return <div className="selections">
+    {selectionIndicators}
+  </div>;
 };

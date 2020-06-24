@@ -38,7 +38,7 @@ class OperationsChannel < ApplicationCable::Channel
   end
 
   def client_key
-    "document:#{@document.id}:operations_#{@client_id}"
+    "document:#{@document.id}:operations:#{@client_id}"
   end
 
   def operation_params(params)

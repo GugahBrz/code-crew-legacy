@@ -3,7 +3,8 @@ import { transformOffset } from "./transform";
 import UndoStack from "./UndoStack";
 
 class CollaborativeDocument {
-  constructor(documentId, content, onChange) {
+  constructor(client, documentId, content, onChange) {
+    this.client = client;
     this.content = content;
     this.selectionAnchor = 0;
     this.selectionFocus = 0;
@@ -23,7 +24,7 @@ class CollaborativeDocument {
       allOperationsAcknowledged: this._allOperationsAcknowledged,
       onSelectionUpdate: this._receivedUpdatedSelection
     });
-    this.collaborationClient.connect(this, version);
+    this.collaborationClient.connect(this.client, this, version);
   }
 
   perform(operation, allowUndo = true) {
