@@ -8,6 +8,11 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
+import ActionCable from "actioncable";
+
+// require("src/editor")
+import "src/editor/index";
+
 //= require jquery3
 //= require popper
 //= require bootstrap
@@ -18,3 +23,6 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+window.App || (window.App = {});
+window.App.cable = ActionCable.createConsumer();

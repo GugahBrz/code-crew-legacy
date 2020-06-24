@@ -23,6 +23,9 @@ group :production do
   gem 'redis', '~> 4.0'
 end
 
+# React
+gem 'react-rails'
+
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

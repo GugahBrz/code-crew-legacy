@@ -1,5 +1,12 @@
 <h1>Editing document</h1>
 
-<%= render 'form' %>
+<%#= render 'form' %>
+<%= content_tag :div,
+  class: "collaborative-editor",
+  data: {
+    documentId: @document.id,
+    content: @document.content,
+    version: @document.version
+  }.to_json do %><% end %>
 
 <%= link_to 'Back', documents_path, class: "btn btn-link" %>
