@@ -28,8 +28,6 @@ class PermissionsController < ApplicationController
     )
 
     if @permission.save
-      inform_user
-
       redirect_to document_permissions_path
     else
       redirect_to document_permissions_path, notice: 'Something went wrong.'
@@ -47,11 +45,7 @@ class PermissionsController < ApplicationController
     #   e.g FindOrInviteUserService
     user = User.find_by(email: secure_params[:user][:email])
 
-    should_inform_user = user.email != self.user.email ? true : false
-
     if @permission.update(user: user, role: secure_params[:role])
-      inform_user if should_inform_user
-
       redirect_to document_permissions_path
     else
       redirect_to document_permissions_path, notice: 'Something went wrong.'
@@ -78,10 +72,5 @@ class PermissionsController < ApplicationController
 
   def set_document
     @document = Document.find(params[:document_id])
-  end
-
-  # FIXME: It shouldn't be here
-  def inform_user
-    DocumentMailer.document_shared_email(current_user, @document, @permission).deliver_now
   end
 end
