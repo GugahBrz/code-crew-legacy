@@ -1,6 +1,7 @@
 import React from "react";
 import CollaborativeDocument from "./CollaborativeDocument";
 import Selections from "./Selections";
+import classNames from 'classnames';
 
 class CollaborativeEditor extends React.Component {
   constructor(props) {
@@ -133,12 +134,12 @@ class CollaborativeEditor extends React.Component {
 
   render() {
     return (
-      <div className="editor">
+      <div className={classNames('editor', 'form-group')}>
         <textarea
           ref={editor => (this.editor = editor)}
           onKeyDown={this.onKeyDown}
           onKeyPress={this.onKeyPress}
-          className="editor-content"
+          className={classNames('editor-content', 'form-control')}
           onChange={() => undefined}
           value={this.state.document.content}
         />
