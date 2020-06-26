@@ -17,7 +17,10 @@ export default props => {
         clientId={selection.clientId}
       />
     ));
-  return <div className="selections">
-    {selectionIndicators}
-  </div>;
+  return (
+    <div className="selections card my-4">
+      <p>Active users</p>
+      {selectionIndicators}
+    </div>
+  );
 };

@@ -1,7 +1,9 @@
 import React from "react";
+
+import classNames from 'classnames';
+
 import CollaborativeDocument from "./CollaborativeDocument";
 import Selections from "./Selections";
-import classNames from 'classnames';
 
 class CollaborativeEditor extends React.Component {
   constructor(props) {
@@ -142,6 +144,7 @@ class CollaborativeEditor extends React.Component {
           className={classNames('editor-content', 'form-control')}
           onChange={() => undefined}
           value={this.state.document.content}
+          rows={8}
         />
         <Selections
           textarea={this.editor}

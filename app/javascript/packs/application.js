@@ -10,10 +10,11 @@ require("channels")
 
 import ActionCable from "actioncable";
 
-// require("src/editor")
-import "src/editor/index";
+// Maybe should not work with relative paths...
+import "../src/editor/index";
 
 //= require jquery3
+//= require jquery_ujs
 //= require popper
 //= require bootstrap
 

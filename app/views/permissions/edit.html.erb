@@ -1,4 +1,4 @@
-<h1>Editing Permission</h1>
+<h2>Editing Permission</h2>
 
 <%= form_with model: @permission, url: document_permission_path, multiple: true do |form| %>
   <%= form.fields_for :user, @permission.user do |user| %>

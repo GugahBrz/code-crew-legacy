@@ -1,14 +1,12 @@
-<h1>Documents</h1>
+<div class="d-flex justify-content-between align-items-center my-4">
+  <h2><%= @document.title %></h2>
 
-<p>
-  <strong>Title:</strong>
-  <%= @document.title %>
-</p>
+  <%= link_to 'Back', documents_path, class: "btn btn-link ml-auto" %>
+</div>
 
-<p>
-  <strong>Text:</strong>
-  <%= @document.content %>
-</p>
+<div class="card my-4">
+  <pre class="prettyprint"><%= @document.content %></pre>
+</div>
 
 <%= link_to 'Edit', edit_document_path(@document), class: "btn btn-link" %>
 <%= link_to 'Back', documents_path, class: "btn btn-link" %>

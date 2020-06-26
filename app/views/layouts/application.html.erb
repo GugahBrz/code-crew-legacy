@@ -7,10 +7,14 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   </head>
 
-  <body>
-    <%= render 'layouts/navbar' %>
+  <body class="app <%= 'bg-primary' unless user_signed_in? %>">
+    <% if user_signed_in? %>
+      <%= render 'layouts/navbar' %>
+    <% end %>
 
     <div class="container my-4">
       <%= yield %>

@@ -1,3 +1,35 @@
 $primary: #086616;
 
 @import "bootstrap";
+
+body {
+  height: 100vh;
+}
+
+// classes
+.centered {
+  margin: 0 auto;
+  float: none;
+}
+
+// components
+.card {
+  padding: 16px;
+}
+
+pre.prettyprint {
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+}
+
+.app {
+  // devise
+  .devise-view {
+    max-width: 550px;
+
+    .logo {
+      margin: 16px;
+    }
+  }
+}

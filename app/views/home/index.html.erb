@@ -1,2 +1,5 @@
-<h1>Home</h1>
 <p>Logged in as <strong><%= current_user.email %></strong>.</p>
+
+<p>Welcome to codecrew, a pair programming platform where you can share documents between colleagues and work together!</p>
+
+<%= link_to 'Start pairing now!', new_document_path, class: "btn btn-primary" %>
