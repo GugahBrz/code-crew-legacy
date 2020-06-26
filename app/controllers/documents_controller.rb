@@ -20,7 +20,11 @@ class DocumentsController < BaseController
 
   # POST documents
   def create
-    @document = current_user.documents.create!(secure_params)
+    # FIXME: change default to ''
+    title = secure_params[:title].present? ? secure_params[:title] : ''
+    content = secure_params[:content].present? ? secure_params[:content] : ''
+
+    @document = current_user.documents.create!({ title: title, content: content })
 
     redirect_to @document
   end
